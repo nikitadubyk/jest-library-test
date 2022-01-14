@@ -1,6 +1,13 @@
 {
+    "jest": {
+        "collectCoverage": true,
+        "coverageReporters": [
+            "json",
+            "html"
+        ]
+    },
     "scripts": {
-        "test": "jest"
+        "test": "jest --coverage"
     },
     "dependencies": {
         "axios": "^0.24.0"

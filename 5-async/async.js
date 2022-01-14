@@ -7,7 +7,13 @@ async function fetchData() {
         );
         return response.data;
     } catch (error) {
-        new Error('error');
+        if (error.response) {
+            console.log(`Error response: ${error.response}, ${error.status}`);
+        } else if (error.request) {
+            console.log(`Error request: ${error.request}`);
+        } else {
+            console.log(`Error: ${error.message}`);
+        }
     }
 }
 

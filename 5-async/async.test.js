@@ -19,12 +19,8 @@ describe('Testing a foo function:', () => {
         return expect(foo('some data')).resolves.toBe('some data');
     });
 
-    test('should return error with promise', async () => {
-        try {
-            await foo();
-        } catch (e) {
-            expect(e.message).toMatch('error');
-        }
+    test('should return error with promise', () => {
+        return expect(foo()).rejects.toThrowError('error');
     });
 });
 

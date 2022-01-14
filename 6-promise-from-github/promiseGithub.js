@@ -1,9 +1,5 @@
-function doSomething() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(10);
-        }, 200);
-    });
+async function doSomething() {
+    return 10;
 }
 
 function doSomethingElse() {
