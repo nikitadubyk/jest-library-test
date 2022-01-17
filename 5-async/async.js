@@ -1,20 +1,10 @@
 const axios = require('axios');
 
 async function fetchData() {
-    try {
-        const response = await axios.get(
-            'https://jsonplaceholder.typicode.com/todos'
-        );
-        return response.data;
-    } catch (error) {
-        if (error.response) {
-            console.log(`Error response: ${error.response}, ${error.status}`);
-        } else if (error.request) {
-            console.log(`Error request: ${error.request}`);
-        } else {
-            console.log(`Error: ${error.message}`);
-        }
-    }
+    const response = await axios.get(
+        'https://jsonplaceholder.typicode.com/todos'
+    );
+    return response.data;
 }
 
 function foo(data) {

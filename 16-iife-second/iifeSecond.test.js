@@ -1,21 +1,17 @@
 function foo(callback) {
-    try {
-        var foo = 'Hello';
-        (function () {
-            var bar = ' World';
-            callback(foo, bar);
-        })();
-        callback(foo, bar);
-    } catch (error) {
-        throw new Error('the globally bar was not found');
-    }
+    var foo = 'Hello';
+    var bar;
+    (function () {
+        var bar = ' World';
+        callback(foo + bar);
+    })();
+    callback(bar);
 }
 
-test('the function throws an error because no bar was found globally', () => {
-    const callback = (x, y) => {
-        return [x, y];
-    };
-    const fooTest = () => foo(callback);
+test('Test the function for scope. It is expected that on the second call we will get undefined', () => {
+    const callback = jest.fn();
+    foo(callback);
 
-    expect(fooTest).toThrowError('the globally bar was not found');
+    expect(callback).toHaveBeenNthCalledWith(1, 'Hello World');
+    expect(callback).toHaveBeenNthCalledWith(2, undefined);
 });

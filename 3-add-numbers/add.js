@@ -1,5 +1,7 @@
 function add(a, b) {
-    const incorrect = (isNaN(a) && isNaN(b)) || a === null || b === null;
+    const incorrect =
+        (typeof a !== 'number' && typeof b !== 'number') ||
+        (isNaN(a) && isNaN(b));
 
     if (incorrect) {
         throw new Error('Oops, pass the numbers');

@@ -41,12 +41,4 @@ describe('Testing fetchData:', () => {
 
         return fetchData().then(data => expect(todos).toEqual(todos));
     });
-
-    test('should return error', async () => {
-        try {
-            await fetchData();
-        } catch (e) {
-            expect(e.message).toBe('error');
-        }
-    });
 });

@@ -39,11 +39,15 @@ describe('Testing function add:', () => {
         const addNaN = () => add(NaN)(5);
         const addWithUndefined = () => add(NaN)(add(2, undefined));
         const addArray = () => add([1, 2])([3, 4]);
+        const addString = () => add('1')('2');
+        const addEmptyArray = () => add([])([]);
 
         expect(addNull).toThrow();
         expect(addNothing).toThrow();
         expect(addNaN).toThrowError('Oops, pass the numbers');
         expect(addWithUndefined).toThrowError('Oops, pass the numbers');
         expect(addArray).toThrowError('Oops, pass the numbers');
+        expect(addString).toThrowError('Oops, pass the numbers');
+        expect(addEmptyArray).toThrowError('Oops, pass the numbers');
     });
 });
