@@ -1,21 +1,19 @@
 function add(a, b) {
-    const incorrect =
-        (typeof a !== 'number' && typeof b !== 'number') ||
-        (isNaN(a) && isNaN(b)) ||
-        typeof a === 'string' ||
-        typeof b === 'string';
-
-    if (incorrect) {
-        throw new Error('Oops, pass the numbers');
+    if (typeof a === 'number' && !isNaN(a)) {
+        if (typeof b === 'undefined') {
+            return function (c) {
+                if (typeof c === 'number' && !isNaN(c)) {
+                    return a + c;
+                } else {
+                    throw new Error('Oops, pass the numbers');
+                }
+            };
+        } else if (typeof b === 'number' && !isNaN(b)) {
+            return a + b;
+        }
     }
 
-    if (a && b) {
-        return a + b;
-    } else {
-        return function (c) {
-            return a + c;
-        };
-    }
+    throw new Error('Oops, pass the numbers');
 }
 
 module.exports = add;

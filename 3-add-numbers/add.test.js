@@ -35,23 +35,29 @@ describe('Testing function add:', () => {
 
     test('tests with incorrect data types', () => {
         const addNull = () => add(null)(0);
+        const addNullWithNumber = () => add(null, 10);
         const addNothing = () => add()();
         const addNaN = () => add(NaN)(5);
+        const addNaNSecond = () => add(12)(NaN);
         const addWithUndefined = () => add(NaN)(add(2, undefined));
+        const addUndefinedWithNumber = () => add(undefined, 10);
         const addArray = () => add([1, 2])([3, 4]);
         const addString = () => add('1')('2');
         const addStringTwo = () => add('10', 10);
-        const addStringThree = () => add(1, '2');
         const addEmptyArray = () => add([])([]);
+        const addArrayWithNumber = () => add([10], 10);
 
         expect(addNull).toThrow();
+        expect(addNullWithNumber).toThrow();
         expect(addNothing).toThrow();
         expect(addNaN).toThrowError('Oops, pass the numbers');
+        expect(addNaNSecond).toThrowError('Oops, pass the numbers');
         expect(addWithUndefined).toThrowError('Oops, pass the numbers');
+        expect(addUndefinedWithNumber).toThrowError('Oops, pass the numbers');
         expect(addArray).toThrowError('Oops, pass the numbers');
         expect(addString).toThrowError('Oops, pass the numbers');
         expect(addStringTwo).toThrowError('Oops, pass the numbers');
-        expect(addStringThree).toThrowError('Oops, pass the numbers');
         expect(addEmptyArray).toThrowError('Oops, pass the numbers');
+        expect(addArrayWithNumber).toThrowError('Oops, pass the numbers');
     });
 });
